@@ -13,7 +13,7 @@ const CategoryFood = () => {
     return (
        <section>
         <Sectiontitle 
-         subHeading={'oder online'}
+         subHeading={'order online'}
         heading= {'From 11:00am to 10:00pm'}>
        
         </Sectiontitle>

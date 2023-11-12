@@ -3,7 +3,7 @@
 const Error = () => {
     return (
         <div>
-            <img src="/src/assets/icon/correct.png" alt="" />
+            <img src="/src/assets/404.gif" alt="" />
         </div>
     );
 };
