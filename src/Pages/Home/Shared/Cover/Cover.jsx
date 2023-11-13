@@ -1,9 +1,12 @@
 import { Parallax } from 'react-parallax';
-import ManuItems from '../ManuItems/ManuItems';
+
+
 
 const Cover = ({img ,title}) => {
     return (
       <div>
+     
+         
           <Parallax
         blur={{ min: -15, max: 15 }}
         bgImage={img}
@@ -22,7 +25,7 @@ const Cover = ({img ,title}) => {
 </div>
        
     </Parallax>
-    <ManuItems></ManuItems>
+    
       </div>
       
     );
