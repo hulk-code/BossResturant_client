@@ -15,6 +15,7 @@ const ManuItems = ({item}) => {
             <p className="text-yellow-500">${price}</p>
             </div>
           
+          
         </div>
     );
 };

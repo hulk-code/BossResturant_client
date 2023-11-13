@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Cover from "../../Home/Shared/Cover/Cover";
 import ManuItems from "../../Home/Shared/ManuItems/ManuItems";
 
@@ -15,6 +16,7 @@ const ManuCategory = ({items ,img,title}) => {
                     items.map(item => <ManuItems key={item._id} item={item}></ManuItems>)
                 }
             </div>
+           <Link to={`/orders/${title}`}> <button className="btn btn-outline border-0 border-b-4 mt-4 ">Make_Order</button></Link>
         </div>
     );
 };

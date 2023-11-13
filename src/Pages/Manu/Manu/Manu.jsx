@@ -5,6 +5,7 @@ import img1 from '../../../assets/menu/salad-bg.jpg'
 import img2 from '../../../assets/menu/dessert-bg.jpeg'
 import img3 from '../../../assets/menu/soup-bg.jpg'
 import img4 from '../../../assets/menu/pizza-bg.jpg'
+import img5 from '../../../assets/menu/dessert-bg.jpeg'
 import UseManu from "../../../Component/Hooks/UseManu";
 import Sectiontitle from "../../Home/Shared/SectionTitle/Sectiontitle";
 import ManuCategory from "../ManuCategory/ManuCategory";
@@ -16,6 +17,7 @@ const Manu = () => {
     const drinks=manu.filter(item => item.category ==='drinks')
     const soup=manu.filter(item => item.category ==='soup')
     const pizza=manu.filter(item => item.category ==='pizza')
+    const dessert=manu.filter(item => item.category ==='dessert')
     return (
         <div>
               <Helmet>
@@ -30,25 +32,31 @@ const Manu = () => {
          <ManuCategory 
          img={img1}
          items={salad}
-          title='salad'
+          title={'salad'}
 
          ></ManuCategory>
          <ManuCategory 
          img={img2}
          items={drinks}
-          title='drinks'
+          title={'drinks'}
 
          ></ManuCategory>
          <ManuCategory 
          img={img3}
          items={soup}
-          title='soup'
+          title={'soup'}
 
          ></ManuCategory>
          <ManuCategory 
          img={img4}
          items={pizza}
-          title='pizza'
+          title={'pizza'}
+
+         ></ManuCategory>
+         <ManuCategory 
+         img={img5}
+         items={dessert}
+          title={'dessert'}
 
          ></ManuCategory>
 

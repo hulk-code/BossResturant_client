@@ -6,6 +6,7 @@ import Manu from "../Pages/Manu/Manu/Manu";
 import Order from "../Pages/Order/Order";
 
 
+
  export const router = createBrowserRouter([
     {
       path: "/",
@@ -21,8 +22,8 @@ import Order from "../Pages/Order/Order";
           element:<Manu></Manu>,
         },
         {
-          path: '/order',
-          element:<Order></Order>,
+          path: '/orders/:category',
+          element:<Order></Order>
         },
       ],
     },
