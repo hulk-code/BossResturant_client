@@ -1,22 +1,11 @@
-import { useEffect, useState } from "react";
+
 import Sectiontitle from "../SectionTitle/Sectiontitle";
 import ManuItems from "../ManuItems/ManuItems";
 import UseManu from "../../../../Component/Hooks/UseManu";
 
 
 const PopulerManu = () => {
-    // const [manu , setManu]=useState([])
-    // useEffect( () =>{
-    //     fetch('manu.json')
-    //     .then(res =>res.json())
-    //     .then(data =>{
-            
-    //         const populerItems=data.filter(item => item.category ==='popular')
-    //         setManu(populerItems)
-           
-    //     })
-        
-    // },[])
+    
 
     const [manu]=UseManu()
     console.log(manu)
