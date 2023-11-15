@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home/Home";
 import Error from "../Pages/Home/ErrorPage/Error";
 import Manu from "../Pages/Manu/Manu/Manu";
 import Order from "../Pages/Order/Order";
+import Login from "../Pages/Login/Login";
 
 
 
@@ -24,6 +25,10 @@ import Order from "../Pages/Order/Order";
         {
           path: '/orders/:category',
           element:<Order></Order>
+        },
+        {
+          path: '/login',
+          element:<Login></Login>
         },
       ],
     },

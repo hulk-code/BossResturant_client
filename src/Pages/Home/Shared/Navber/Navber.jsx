@@ -5,7 +5,8 @@ const Navber = () => {
   const navLink=<>
    <li><NavLink to='/'>Home</NavLink> </li>
    <li><NavLink to='/manu'>manu</NavLink> </li>
-   <li><NavLink to='/orders'>Order_Food</NavLink> </li>
+   <li><NavLink to='/orders/salad'>Order_Food</NavLink> </li>
+   <li><NavLink to='/login'>Login</NavLink> </li>
   </>
     return (
         <div>
