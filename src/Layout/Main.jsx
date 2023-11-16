@@ -5,7 +5,7 @@ import Footer from "../Pages/Home/Shared/Footer/Footer";
 const Main = () => {
     const location=useLocation()
     console.log(location);
-    const noNavNoFoot=location.pathname.includes('login')
+    const noNavNoFoot=location.pathname.includes('login') ||location.pathname.includes('signup')
     return (
         <div>
            { noNavNoFoot|| <Navber></Navber>}

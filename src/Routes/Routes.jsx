@@ -5,6 +5,9 @@ import Error from "../Pages/Home/ErrorPage/Error";
 import Manu from "../Pages/Manu/Manu/Manu";
 import Order from "../Pages/Order/Order";
 import Login from "../Pages/Login/Login";
+import SignUp from "../Pages/SignUp/SignUp";
+import Secrat from "../Pages/Secret/Secrat";
+import PrivateRoute from "../Provider/PrivateRoute/PrivateRoute";
 
 
 
@@ -29,6 +32,14 @@ import Login from "../Pages/Login/Login";
         {
           path: '/login',
           element:<Login></Login>
+        },
+        {
+          path: '/signup',
+          element:<SignUp></SignUp>
+        },
+        {
+          path: '/secrat',
+          element:<PrivateRoute><Secrat></Secrat></PrivateRoute>
         },
       ],
     },
