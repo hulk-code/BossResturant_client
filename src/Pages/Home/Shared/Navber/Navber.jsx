@@ -18,7 +18,15 @@ const Navber = () => {
    <li><NavLink to='/secrat'>Secrat</NavLink> </li>
  
    {
-          user?<> <button onClick={handleLogOut} className="btn btn-ghost ">LogOut</button></> :<> <li><NavLink to='/login'>Login</NavLink> </li></>
+          user?<> <span className="mr-3">{user?.displayName
+          }</span>
+          <div className="avatar">
+  <div className="w-[50px] rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+    <img src={user?.photoURL
+          } />
+  </div>
+</div> 
+          <button onClick={handleLogOut} className="btn btn-ghost ">LogOut</button></> :<> <li><NavLink to='/login'>Login</NavLink> </li></>
    }
    
   </>
