@@ -8,6 +8,9 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Secrat from "../Pages/Secret/Secrat";
 import PrivateRoute from "../Provider/PrivateRoute/PrivateRoute";
+import DashBoard from "../Layout/DashBoard/DashBoard";
+import Cart from "../Pages/UserDashBoard/Cart/Cart";
+
 
 
 
@@ -43,4 +46,15 @@ import PrivateRoute from "../Provider/PrivateRoute/PrivateRoute";
         },
       ],
     },
+    {
+      path:'/dashboard',
+      element:<DashBoard></DashBoard>,
+      children:[
+       {
+        path:'cart',
+        element:<Cart></Cart>
+       }
+      ]
+    }
+
   ]);
