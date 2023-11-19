@@ -1,12 +1,39 @@
-import { FaAd, FaCalendar, FaHome, FaList, FaSearch, FaShoppingCart } from "react-icons/fa";
+import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaUser, FaUtensils } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const DashBoard = () => {
+   const isAdmin=true;
     return (
         <div className="flex text-bold py-4"> 
             <div className="w-64 min-h-screen bg-orange-400">
              <ul className="menu ">
-             <li className="mb-2">
+              {
+               isAdmin?<>
+                <li className="mb-2">
+                    <NavLink to='/dashboard/adminHome'> <FaHome></FaHome> Admin Home</NavLink>
+                 </li>
+                 <li className="mb-2">
+                    <NavLink to='/dashboard/additems'>
+                       <FaUtensils></FaUtensils> add_items
+                    </NavLink>
+                 </li>
+                 <li className="mb-2">
+                    <NavLink to='/dashboard/manageitems'> 
+                    <FaList></FaList> Manage Items</NavLink>
+                 </li>
+                 <li className="mb-2">
+                    <NavLink to='/dashboard/bookings'> 
+                    <FaBook></FaBook> Mnage Booking
+                    </NavLink>
+                 </li>
+                 <li className="mb-2">
+                    <NavLink to='/dashboard/alluser'> 
+                    <FaUser></FaUser>all_User
+                    </NavLink>
+                 </li>
+               </>:
+               <>
+               <li className="mb-2">
                     <NavLink to='/dashboard/userHome'> <FaHome></FaHome> User Home</NavLink>
                  </li>
                  <li className="mb-2">
@@ -26,7 +53,10 @@ const DashBoard = () => {
                     <NavLink to='/dashboard/booking'> 
                     <FaList></FaList>My Booking
                     </NavLink>
-                 </li>
+                 </li></>
+
+               
+              }
                  <div className="divider"></div>
                  <li className="mb-2">
                     <NavLink to='/'> 
@@ -36,6 +66,11 @@ const DashBoard = () => {
                  <li className="mb-2">
                     <NavLink to='/orders/salad'> 
                    <FaSearch></FaSearch>Order
+                    </NavLink>
+                 </li>
+                 <li className="mb-2">
+                    <NavLink to='/orders/contact'> 
+                  <FaEnvelope></FaEnvelope> Contact
                     </NavLink>
                  </li>
              </ul>

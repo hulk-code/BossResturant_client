@@ -4,11 +4,14 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import UseaxiosUser from "../../Component/Hooks/UseaxiosUser";
+import SocialLogin from "../../Component/SocialLogin/SocialLogin";
 
 
 
 const SignUp = () => {
   const{CreateUser ,updateUserProfile}=useContext(AuthContext)
+  const axiosPublic=UseaxiosUser()
   const navigate=useNavigate()
     const {
         register,
@@ -25,6 +28,13 @@ const SignUp = () => {
       console.log(loggedUser);
          updateUserProfile(data.name , data.photoURL)
          .then(() =>{
+          const userInfo={
+            name:data.name,
+            email:data.email
+          }
+          axiosPublic.post('/user',userInfo)
+          .then(res =>{
+             if(res.data.insertedId){
               reset()
               Swal.fire({
                 position: "top-end",
@@ -34,6 +44,9 @@ const SignUp = () => {
                 timer: 1500
               });
               navigate('/')
+             }
+          })
+             
          })
          .catch(error =>console.log(error))
       
@@ -103,13 +116,15 @@ const SignUp = () => {
           <input  className="btn btn-primary" type="submit" value="SignUp" />
          
         </div>
+        <SocialLogin></SocialLogin>
       </form>
-      <p className='text-center'>
-        <small>Already have an account? <Link className='text-red-700 font-bold text-sm' to='/login'>LogIn</Link></small>
+      <p className='text-center p-4'>
+        <small>Already have an account? <Link className='text-red-700 font-bold text-sm ' to='/login'>LogIn</Link></small>
       </p>
     </div>
   </div>
-</div></>
+</div>
+</>
     );
 };
 

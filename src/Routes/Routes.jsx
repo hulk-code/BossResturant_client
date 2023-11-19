@@ -10,6 +10,7 @@ import Secrat from "../Pages/Secret/Secrat";
 import PrivateRoute from "../Provider/PrivateRoute/PrivateRoute";
 import DashBoard from "../Layout/DashBoard/DashBoard";
 import Cart from "../Pages/UserDashBoard/Cart/Cart";
+import AllUser from "../Layout/DashBoard/AllUsers/AllUser";
 
 
 
@@ -53,7 +54,11 @@ import Cart from "../Pages/UserDashBoard/Cart/Cart";
        {
         path:'cart',
         element:<Cart></Cart>
-       }
+       },
+       {
+        path:'alluser',
+        element:<AllUser></AllUser>
+       },
       ]
     }
 

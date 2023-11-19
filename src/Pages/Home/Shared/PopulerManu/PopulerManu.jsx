@@ -8,7 +8,7 @@ const PopulerManu = () => {
     
 
     const [manu]=UseManu()
-    console.log(manu)
+    // console.log(manu)
     const populer=manu.filter(item => item.category ==='popular')
     return (
         <div>
