@@ -12,6 +12,22 @@ const{data : users=[] ,refetch}=useQuery({
         return res.data;
     }
 })
+ const handleMakeUser=user=>{
+    axiosSecure.patch(`/user/admin/${user._id}`)
+    .then(res =>{
+        console.log(res.data)
+        if(res.data.modifiedCount >0){
+            refetch()
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title:`${user.name} admin created`,
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+    })
+ }
         const handledeleteUser=user=>{
             Swal.fire({
                 title: "Are you sure?",
@@ -65,7 +81,9 @@ const{data : users=[] ,refetch}=useQuery({
         <th>{user.name}</th>
         <td>{user.email}</td>
         <td>
-        <button onClick={() => handleUser(item._id)} className="btn btn-ghost btn-xs text-2xl"><FaUser></FaUser></button>
+       { user.role ==='admin' ?'admin' :
+       
+       <button onClick={() => handleMakeUser(user)} className="btn btn-ghost btn-xs text-2xl"><FaUser></FaUser></button>}
         </td>
         <td> <button onClick={() => handledeleteUser(user)} className="btn btn-ghost btn-xs text-2xl"><FaTrashAlt></FaTrashAlt></button></td>
       </tr>)
