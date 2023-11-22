@@ -11,6 +11,12 @@ import PrivateRoute from "../Provider/PrivateRoute/PrivateRoute";
 import DashBoard from "../Layout/DashBoard/DashBoard";
 import Cart from "../Pages/UserDashBoard/Cart/Cart";
 import AllUser from "../Layout/DashBoard/AllUsers/AllUser";
+import AddItems from "../Layout/DashBoard/AddItems/AddItems";
+import AdminRoute from "./Adminroute/AdminRoute";
+import ManageItems from "../Layout/DashBoard/ManageItems/ManageItems";
+import UpdateItem from "../Layout/DashBoard/UpdateItem/UpdateItem";
+import Payment from "../Layout/DashBoard/Payment/Payment";
+import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
 
 
 
@@ -47,17 +53,42 @@ import AllUser from "../Layout/DashBoard/AllUsers/AllUser";
         },
       ],
     },
+
     {
-      path:'/dashboard',
-      element:<DashBoard></DashBoard>,
+      path:'dashboard',
+      element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
+      //  element:<DashBoard></DashBoard>,
       children:[
        {
         path:'cart',
-        element:<Cart></Cart>
+        element:<PrivateRoute><Cart></Cart></PrivateRoute>
        },
        {
+        path:'payment',
+        element:<PrivateRoute><Payment></Payment></PrivateRoute>
+       },
+       {
+        path:'paymenthistory',
+        element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
+       },
+
+       //admin route
+       {
         path:'alluser',
-        element:<AllUser></AllUser>
+        element:<AdminRoute><AllUser></AllUser></AdminRoute>
+       },
+       {
+        path:'additems',
+        element:<AdminRoute><AddItems></AddItems></AdminRoute>
+       },
+       {
+        path:'manageitems',
+        element:<AdminRoute><ManageItems></ManageItems></AdminRoute>
+       },
+       {
+        path:'updateItem/:id',
+        element:<AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
+        loader: ({params}) => fetch(`http://localhost:3000/menu/${params.id}`)
        },
       ]
     }

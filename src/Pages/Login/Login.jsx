@@ -13,7 +13,7 @@ const Login = () => {
     const navigate=useNavigate()
     const location=useLocation()
     const from=location.state?.form?.pathname ||"/"
-     console.log(from);
+    //  console.log(from);
     useEffect(() =>{
         loadCaptchaEnginge(6); 
     },[])
