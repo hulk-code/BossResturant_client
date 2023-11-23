@@ -3,74 +3,77 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStat
 import { app } from "../Firebase/firebase.config";
 import UseaxiosUser from "../Component/Hooks/UseaxiosUser";
 
-export const AuthContext=createContext(null)
- const auth=getAuth(app)
+export const AuthContext = createContext(null)
+const auth = getAuth(app)
 
-const AuthProvider = ({children}) => {
-    const [user ,setUser]=useState()
-   const[loading ,setLoading]=useState(true)
-   const googleProvider=new GoogleAuthProvider()
-   const axiosPublic=UseaxiosUser()
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState()
+  const [loading, setLoading] = useState(true)
+  const googleProvider = new GoogleAuthProvider()
+  const axiosPublic = UseaxiosUser()
 
-   const CreateUser=(email ,password)=>{
-  return  createUserWithEmailAndPassword(auth,email,password)
-   }
-  const signIn=(email ,password)=>{
-    return signInWithEmailAndPassword(auth , email ,password)
+  const CreateUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password)
   }
-  const googleSignIn=()=>{
+  const signIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password)
+  }
+  const googleSignIn = () => {
     setLoading(true)
-    return signInWithPopup(auth , googleProvider)
+    return signInWithPopup(auth, googleProvider)
   }
-  const logout=()=>{
+  const logout = () => {
     setLoading(true);
     return signOut(auth)
   }
-  const updateUserProfile=(name , photo) =>{
-   return updateProfile(auth.currentUser, {
-        displayName: name, photoURL: photo
-      })
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name, photoURL: photo
+    })
   }
 
-   useEffect(()=>{
-   const unsubscribe =onAuthStateChanged(auth , currentUser=>{
-        setUser(currentUser);
-        if(currentUser){
-          const userInfo={email:currentUser.email}
-          axiosPublic.post('/jwt' ,userInfo)
-          .then(res=>{
-            if(res.data.token){
-              localStorage.setItem('access-token',res.data.token)
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+      setUser(currentUser);
+      if (currentUser) {
+        const userInfo = { email: currentUser.email }
+        axiosPublic.post('/jwt', userInfo)
+          .then(res => {
+            if (res.data.token) {
+              localStorage.setItem('access-token', res.data.token)
+              setLoading(false)
             }
+
           })
-        }
-        else{
-          localStorage.removeItem('access-token')
-        }
-        // console.log('current user' ,currentUser);
-        setLoading(false)
+      }
+      else {
+        localStorage.removeItem('access-token')
+          setLoading(false)
+      }
+      // console.log('current user' ,currentUser);
+      
 
     });
-    return() =>{
-        return unsubscribe()
+    return () => {
+      return unsubscribe()
     }
-   },[])
-    
-const authInfo={
-     user,
-     loading,
-     CreateUser,
-     signIn,
-     googleSignIn,
-     logout,
-     updateUserProfile
-}
+  }, [])
 
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider >
-    );
+  const authInfo = {
+    user,
+    loading,
+    CreateUser,
+    signIn,
+    googleSignIn,
+    logout,
+    updateUserProfile
+  }
+
+  return (
+    <AuthContext.Provider value={authInfo}>
+      {children}
+    </AuthContext.Provider >
+  );
 };
 
 export default AuthProvider;

@@ -17,6 +17,8 @@ import ManageItems from "../Layout/DashBoard/ManageItems/ManageItems";
 import UpdateItem from "../Layout/DashBoard/UpdateItem/UpdateItem";
 import Payment from "../Layout/DashBoard/Payment/Payment";
 import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
+import AdminHome from "../Layout/DashBoard/AdminHome/AdminHome";
+import UserHome from "../Layout/DashBoard/UserHome/UserHome";
 
 
 
@@ -59,20 +61,30 @@ import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
       element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
       //  element:<DashBoard></DashBoard>,
       children:[
+
+       {
+        path:'userHome',
+        element:<UserHome></UserHome>
+       },
        {
         path:'cart',
-        element:<PrivateRoute><Cart></Cart></PrivateRoute>
+        element:<Cart></Cart>
        },
        {
         path:'payment',
-        element:<PrivateRoute><Payment></Payment></PrivateRoute>
+        element:<Payment></Payment>
        },
        {
         path:'paymenthistory',
-        element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
+        element:<PaymentHistory></PaymentHistory>
        },
 
        //admin route
+
+       {
+        path:'adminHome',
+        element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+       },
        {
         path:'alluser',
         element:<AdminRoute><AllUser></AllUser></AdminRoute>
